@@ -1,0 +1,8 @@
+# API de Predicción de Ventas
+
+API construida con FastAPI para predecir ventas futuras basadas en datos históricos.
+
+## Instalación
+
+```bash
+pip install -r requirements.txt
