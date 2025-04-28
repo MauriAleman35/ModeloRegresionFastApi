@@ -246,7 +246,13 @@ async def check_db_status():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error de conexión a MongoDB: {str(e)}")
     
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # En producción, limita esto a los dominios específicos
+    allow_credentials=True,
+    allow_methods=["*"],  # Puedes especificar: ["GET", "POST", "PUT", "DELETE"]
+    allow_headers=["*"],
+)
 # Para ejecutar desde el archivo principal
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=PORT, reload=DEBUG)
